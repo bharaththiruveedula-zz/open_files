@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html> 
+      <head> 
+           <link href = "css/basic.css" rel ="stylesheet" type ="text/css">
+           <script type="text/javascript" src="javascript/HexagonTools.js"></script>
+           <script type="text/javascript" src="javascript/Grid.js"></script>
+           <script type="text/javascript" src="javascript/HexCalcs.js"></script>
+           <script type ="text/javascript" src ="javascript/script.js"></script>
+           <script type ="text/javascript" src ="javascript/test.js"></script>
+           <script type ="text/javascript" src ="javascript/jquery-1.9.1.js"></script>
+      </head>            
+<body onload="getHexGridZR()">
+<!-- " -->
+<div class ="div-left-column_ANR" id ="display" >
+
+<img id="scream" src="images/tower.jpg" width="50" height="50">
+<img id ="gray" src ="images/tower-gray.jpg" width = 50 height = 50/> 
+<br/>
+<canvas id="myCanvas" width="600" height="500"style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+</div>
+<div class ="div-right-column_ANR" style="overflow:scroll;overflow:auto">
+<center>NRT Table</center>
+ <table  id = "anr_table" class="bordered">
+ <thead>
+  <tr>
+        <th>PCI</th>
+        <th>SEN</th>
+        <th>TCI</th>
+        <th>No Ho</th>
+        <th>No X2</th>
+  </tr> 
+  </thead>  
+  <tbody id = "anr_tbody">
+ </tbody>
+ </table>
+</div>
+<div id="footer">
+ <!--  <br/><br/><br/>
+  <input type="button" value="Update">
+  <input type ="button" id="clear" name ="clear" value ="Clear"/> -->
+  <canvas id = "SequenceAnimation" width = "1200" height ="350" style="border:1px solid black"></canvas>
+</div>
+</body>
+</html>

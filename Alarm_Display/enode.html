@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+	  <meta charset="utf-8">
+	  <title>Enode</title>
+	  <link rel="stylesheet" href="css/jquery-ui.css"> 
+	  <script src="js/jquery-1.9.1.js"></script>
+	  <script src="js/jquery-ui.js"></script> 
+	  <!-- <link rel="stylesheet" href="jqueryTabs.css"> -->
+
+	  <script src="js/highcharts.js"></script>
+	  <script src="js/highcharts-more.js"></script>
+	  <!-- <script type="text/javascript" src="pie_chart.js"></script> -->
+	  <!-- <script type="text/javascript" src="pagination.js"></script> -->
+	  <link rel="stylesheet" type="text/css" href="css/alarm.css">
+	  <script type="text/javascript" src="js/jquery.simplePagination.js"></script>
+	<!-- added harikrishna code -->
+	  <link href = "css/basic.css" rel ="stylesheet" type ="text/css">
+	  <script type="text/javascript" src="javascript/HexagonTools.js"></script>
+	  <script type="text/javascript" src="javascript/Grid.js"></script>
+	  <script type="text/javascript" src="javascript/HexCalcs.js"></script>
+	  <script type ="text/javascript" src ="javascript/script.js"></script>
+	  <script type ="text/javascript" src ="javascript/test.js"></script>  
+	  
+	  <!-- end harikrishna -->  
+	  <!-- jtree code starts -->
+	  
+	  <!--  <script type="text/javascript" src="jtree/jquery.easyui.min.js"></script>
+	  <script type="text/javascript" src="jtree/jquery.min.js"></script> 
+	  <link rel="stylesheet" type="text/css" href="jtree/demo.css">
+	  <link rel="stylesheet" type="text/css" href="jtree/easyui.css">
+	  <link rel="stylesheet" type="text/css" href="jtree/icon.css">  --> 
+	  
+	  <link rel="stylesheet" href="jquery.treeview.css" />
+	<!-- <link rel="stylesheet" href="jtree/screen.css" /> -->
+	
+	<!--  <script src="jtree/jquery.js" type="text/javascript"></script>-->
+	<script src="jtree/jquery.cookie.js" type="text/javascript"></script>
+	<script src="jquery.treeview.js" type="text/javascript"></script>
+	
+	<script type="text/javascript" src="jtree/demo.js"></script>
+	  
+	  
+	  <!-- ends -->
+	  <script>
+		  $(function() {
+		    $( "#tabs" ).tabs();
+		  });
+	  </script>
+	  <script type="text/javascript" src='SON.js'></script>
+	  <script type="text/javascript" src='WSON.js'></script>
+	  <script type="text/javascript" src='js/hyst_table.js'></script>
+	 <!--  anirudh code added -->
+	  <script src="javascript/raphael.js"></script>
+	<script src="javascript/loadXMLDoc.js"></script>
+	<script src="javascript/seq-diagram.js"></script>
+    <script type="text/javascript" src="js/enode_table.js"></script>
+	<style  TYPE="text/css"> 
+	
+	</style>
+		  
+	  
+</head>
+
+<body onload="getHexGridZR()">
+
+ <div class="div-left-column" style="height:730px; overflow: scroll;overflow: auto;">
+ <h4 style="color: midnightblue;text-align: center;font-family: arial;">Topology Map</h4>
+  <!-- <h4 style="color: red;text-align: left ;">Sub Network</h4> -->
+ 
+ <!--  <p  id="enode_data" style="text-align: left;padding-left: 20px"></p>-->
+ <ul id="expList"  > 
+ 
+	 <li class='collapsed expanded open' style="padding-left: 0px;font-family: arial;color:midnightblue;font-weight: bold;font-size: 14px ">Sub Network
+			
+			<ul id='expList1'>
+			
+			</ul>
+				<!--<ul id='navigation'><li class='closed'><img alt='' src='enode_b.PNG' height='15px' width='15px'>Name</a><ul id='navigation'><li>abcd</li></ul></li></ul>-->		
+	 </li>
+	
+ </ul>  
+ 
+
+ 
+ </div>
+ <!-- style="text-align: left;padding-left: 20px" -->
+ <div class="div-right-column">
+<div  id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Element Management</a></li>
+    <li><a href="#tabs-2">HO-SON</a></li>
+    <li><a href="#tabs-3">ANR-SON</a></li>
+  </ul>
+  <div id="tabs-1">
+    
+    
+ <!-- <div> -->  
+ 
+ <table border="0"   id="header_table"  style="font-size: 12px;width:95%;overflow:auto;background-color: '#222222'">
+
+<!-- <a href="#" onclick=""></a> -->
+<thead class="table_border" style="background-color: '#222222'">
+<tr style="color: black" >
+	<th style="width: 0.4%;" >Ack</th>
+	<th style="width: 50px;" >Managed Object</th>
+	<th style="width: 50px;" >Perceived Severity</th>
+	<th style="width: 50px;">Probable Cause</th>
+	<th style="width: 50px;" >Specific Problem</th>
+	<th style="width: 50px;" >Event Type</th>
+	<th style="width: 50px;" >Occurrence Time</th>
+</tr>
+</thead>
+</table>
+
+
+<div style="overflow:scroll;width:95%;overflow:auto;height: 60%"> 
+<table border="1"   id="enode_table"  > 
+<tbody id="enode_tbody" style="overflow: scroll;">
+
+</tbody>
+
+</table>
+</div>
+<table  style="font-size: 12px;width:95%;overflow:auto;">
+<tfoot class="table_border" id = 'enode_tfoot' align="center">
+<tr>
+<td  colspan="2" style="border: None;color: #ed561b">Critical :&nbsp&nbsp<input type="text" id="Critical" readonly="readonly" size=3 style="border: 0; width: 20px;"></td>
+<td   style="border: None;color: #FF9655">Major :&nbsp&nbsp<input id="Major" type="text" readonly="readonly" size=3 style="border: 0;width: 20px;"></td>
+<td  style="border: None;color: #FF9000">Minor :&nbsp&nbsp<input id="Minor" type="text" readonly="readonly" size=3 style="border: 0;width: 20px;"></td>
+<td   style="border: None;color:#50B432 ">Warning :&nbsp&nbsp<input type="text" id="Warning" readonly="readonly" size=3 style="border: 0; width: 20px;"></td>
+
+<td   align="center" style="border: None">Total :&nbsp&nbsp<input id="Total" type="text" readonly="readonly" size=3 style="border: 0;width: 25px;"></td>
+</tr>
+</tfoot>
+</table>
+<br>
+
+<div>
+<center>Performance Monitoring</center>
+<br>
+<!-- <div class="pages">
+</div>
+ -->
+<div id="pie_chart"  ></div>
+<div id="area_chart"  ></div>
+</div>
+   
+    
+  </div>
+
+
+<!--   first page ends --> 
+ <!--   second page starts --> 
+  
+  
+  
+<div id="tabs-2">
+
+  <!-- id="graph_div"  id="table_div"-->
+<!-- <div  class="div-left-column_HO"> -->
+<table >
+<tr>
+<td style="width:50%">
+	  <div id="container2" style="min-width: 50%;  margin: 0 ; /* width: 500px*/ ; height: 300px"></div>
+	  <br>
+	  <div id="container" style="min-width: 50%;  margin: 0 ; /*width: 500px*/;height: 300px "> </div> 
+	 <br>
+	 
+	<div style="min-width: 100px;  margin: 0 ; width: 500px ; height: 30px;text-align: center;">
+	<input type="button" id="start_button"  class ="startButton" value="Start" onclick="start_chart()" ></input>
+	
+	<input type="checkbox" id="pause" value="Pause" style="display: none"></input>
+	<input type="button" id="pause_button" class ="pauseButton" value="Pause"  ></input>
+	
+	<button id='clear_button' class ="clearButton" onclick="clearclick1()" value="Clear">Clear</button>
+	
+	</div> 
+</td>
+<!-- </div> --> 
+<!-- <div  class="div-right-column_HO"> -->
+<td style="vertical-align: top;">
+<div style="height: 630px;overflow: scroll;overflow:auto;padding-left: 40px">
+	<h2>HO Parameters</h2>
+	<table id="hyst_table" border="1" class="bordered" >
+	<thead>
+	<tr>
+		<th>Time</th>
+		<th>Name</th>
+		<th>Hyst(dB)</th>
+		<th>TTT(ms)</th>
+	</tr>
+	</thead>
+	<tbody id="hyst_tbody">
+	
+	</tbody>
+	</table>
+</div>
+	</td>
+	</tr>
+</table>
+<!-- </div> -->
+
+<!-- 
+<div class ="div-left-column_ANR"  ></div>
+<div class ="div-right-column_ANR" ></div> -->
+
+</div>	<!--tabs2 div close -->
+  
+  
+  <div id="tabs-3">
+  
+<!--   adding harikrishna code-->  
+
+
+ <div class ="div-left-column_ANR" id ="display" >
+
+<img id="scream" src="images/tower.jpg" width="20" height="20">
+<img id ="gray" src ="images/tower-gray.jpg" width = 20 height = 20/>
+<!-- <fieldset class="network"> -->
+<!-- <legend>Network</legend> -->
+Network
+<br/>
+<canvas id="myCanvas" width="330" height="270" style="border: 1px solid grey;">
+<!-- style="border:1px solid #d3d3d3"; -->
+Your browser does not support the HTML5 canvas</canvas>
+<div style="text-align:right">
+<button id="Reset" style="align:center;">Reset</button>
+</div>
+<!-- </fieldset> -->
+
+
+</div>
+
+
+
+  <!-- <fieldset class = 'table'> -->
+  <!-- <legend> NRT Table</legend> -->
+   
+<div class ="div-right-column_ANR"  >
+ NRT Table 
+<div  class="tableContainer" style="border: 1px solid grey;">
+ <table class="bordered" >
+ <thead>
+  <tr style="border:0">
+        <th style="width:16.5%">Serving ECGI</th>
+        <th style="width:6.3%">S-PCI</th>
+        <th style="width:8%">S-ENb</th>
+        <th style="width:5.1%"> NR</th>
+        <th style="width:16.3%">Target ECGI</th>
+        <th style="width:7.8%">T-ENb</th>
+        <th style="width:14.5%">Target Cell IP Address</th>
+        <th style="width:6.5%">No Remove</th>
+        <th style="width:7.5%">No HO</th>
+        <th>No X2</th>
+  </tr>
+  </thead>
+</table>
+<div style="overflow:scroll;overflow:auto;height:250px" class="tableContainer"> 
+<table id="anr_table" class="bordered">
+  <tbody id = "anr_tbody" style="font-size:9px">
+</tbody>
+ </table>
+</div>
+</div>
+
+</div>  
+</fieldset>
+
+Sequence Diagram
+<div id="canvas">
+ <!--  <br/><br/><br/>
+  <input type="button" value="Update">
+  <input type ="button" id="clear" name ="clear" value ="Clear"/> -->
+  <!-- <canvas id = "SequenceAnimation" width = "1200" height ="350" style="border:1px solid black"></canvas> -->
+</div>
+
+ 
+<!--   code ends -->  
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+ ENODEB_TABLE   
+                       (
+                                    ENODEB_NAME  VARCHAR(30)   primary_key not null
+                             
+                       );
+
+                    
+                       ALARM_CM
+                       (
+                                     ENODEB_NAME            VARCHAR(30)          not null,
+                                     ALARM_ID                     VARCHAR(50)          not null,
+                                     SPECIFIC_PROBLEM    VARCHAR(50)          not null,
+                                     EVENT_TYPE                VARCHAR(50)          not null,
+                                     PROBABLE_CAUSE       VARCHAR(50)          not null,
+                                     PERCIVED_CAUES        VARCHAR(50)          not null,
+                                     MANAGED_OBJECT       VARCHAR(50)          not null,
+                                     OCCUR_TIME                 VARCHAR(50)          not null
+                       );                
+                       
+                       PERFORMANCE_CM
+                       (
+                                     ENODEB_NAME             VARCHAR(30)     not null,
+                                     MANAGED_OBJECT       VARCHAR(50)     not null,
+                                     COUNTER_NAME           VARCHAR(50)     not null, 
+                                     COUNTER_VALUE          INT,NUMBER      not null,
+                                     OCCUR_TIME                 VARCHAR(50)     not null 
+                       )
+                       
