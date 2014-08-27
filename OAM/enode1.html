@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.9.1.js"></script>
+<script type="text/javascript" src="enode_table.js"></script>
+<script src="highcharts.js"></script>
+<script type="text/javascript" src="pie_chart.js"></script>
+<script type="text/javascript" src="area_chart.js"></script>
+<!-- <script type="text/javascript" src="pagination.js"></script> -->
+<link rel="stylesheet" type="text/css" href="alarm.css">
+
+	<script type="text/javascript" src="jquery.simplePagination.js"></script>
+	
+
+<meta charset="ISO-8859-1">
+<title>Enodes</title>
+</head>
+<body>
+
+<div >
+<div id="enode_table1"></div>
+<table border="1"  id="enode_table" >
+
+<!-- <a href="#" onclick=""></a> -->
+<thead>
+<tr>
+	<th>Managed Object</th>
+	<th>Perceived Seiviarity</th>
+	<th>Probable Cause</th>
+	<th>Specific Problem</th>
+	<th>Event Type</th>
+	<th>Occur Time</th>
+</tr>
+</thead>
+<tbody id="enode_tbody" class="tableClass">
+
+
+</tbody>
+<tfoot id = 'enode_tfoot' align="center">
+<tr>
+<td   style="border: None">Critical :&nbsp&nbsp<input type="text" id="Critical" readonly="readonly" size=3 style="border: 0; width: 20px;"></td>
+<td   style="border: None">Major :&nbsp&nbsp<input id="Major" type="text" readonly="readonly" size=3 style="border: 0;width: 20px;"></td>
+<td  style="border: None">Minor :&nbsp&nbsp<input id="Minor" type="text" readonly="readonly" size=3 style="border: 0;width: 20px;"></td>
+<td   style="border: None">Warning :&nbsp&nbsp<input type="text" id="Warning" readonly="readonly" size=3 style="border: 0; width: 20px;"></td>
+
+<td  colspan="3" align="center" style="border: None">Total :&nbsp&nbsp<input id="Total" type="text" readonly="readonly" size=3 style="border: 0;width: 20px;"></td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div class="pages"></div>
+
+<div id="container">
+<div id="pie_chart" ></div>
+<div id="area_chart" ></div>
+</div>
+
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+$(function(){
+$("#enode_table").load(function(){
+alert("came");
+var perPage = 5;
+	var opened = 1;
+	var onClass = 'on';
+	var paginationSelector = '.pages';
+	$('#enode_tbody').simplePagination(perPage, opened, onClass, paginationSelector);
+	
+});
+});
+</script>
+

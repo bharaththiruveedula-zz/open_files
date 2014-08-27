@@ -1,0 +1,64 @@
+<sequence-diagram>
+<action>
+<path>0-3</path>
+<value>UE Connected [RRC_Connected State]</value>
+</action>
+<action>
+<path>3-0</path>
+<value>Request For Measurement Config [RRCConnectionReconfiguration Message]</value>
+</action>
+<action>
+<path>0-3</path>
+<value>Response[RRCConnectionReconfiguration Message Complete]</value>
+</action>
+<action>
+<path>0-1</path>
+<value>NCell Measurement</value>
+</action>
+<action>
+<path>0-3</path>
+<value>Measurement Report (PCI, RSRP/RSRQ)</value>
+</action>
+<action>
+<path>3-2</path>
+<value>Checks PCI of SCell</value>
+</action>
+<action>
+<path>2-3</path>
+<value>PCI Availability Response</value>
+</action>
+<action>
+<path>3-0</path>
+<value>Request For CGI Info [RRCConnectionReconfiguration Message]</value>
+</action>
+<action>
+<path>0-3</path>
+<value>Response[RRCConnectionReconfiguration Message Complete]</value>
+</action>
+<action>
+<path>0-1</path>
+<value>CGI Info (MIB/SIB1)</value>
+</action>
+<action>
+<path>0-3</path>
+<value>Measurement Report (CGI Info ECGI)</value>
+</action>
+<action>
+<path>3-2</path>
+<value>Update ECGI on Cloud</value>
+</action>
+<action>
+<path>2-4</path>
+<value>Notify OAM and Retrieve OAM Controlled NR Attributes</value>
+</action>
+<action>
+<path>2-3</path>
+<value>Update X2 Configuration</value>
+</action>
+<action>
+<path>1-3</path>
+<value>X2 Setup</value>
+</action>
+<sleep-time>500
+</sleep-time>
+</sequence-diagram>
