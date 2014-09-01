@@ -49,9 +49,9 @@ def dispatch(environ, start_response):
 if __name__ == "__main__":
     #url_path = environ['PATH_INFO']
     if len(sys.argv) >= 2:
-        WSGI_SERVER = config_em.WSGI_SERVER or sys.argv[1] or '127.0.0.1' 
+        WSGI_SERVER = config_em.WSGI_SERVER or sys.argv[1] or '0.0.0.0' 
     else:
-        WSGI_SERVER = config_em.WSGI_SERVER or '127.0.0.1'  
+        WSGI_SERVER = config_em.WSGI_SERVER or '0.0.0.0'  
     print WSGI_SERVER
     listener = eventlet.listen((WSGI_SERVER, 9090))
     wsgi.server(listener, dispatch)
